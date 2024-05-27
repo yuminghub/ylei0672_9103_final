@@ -9,8 +9,47 @@ In contrast to the group's artwork, which generates and displays all segments at
 
 ## Inspiration
 I was inspired by Tetris, our group's artwork was pixelated pictures, and I tried to make a rectangular array that stacked over time. I thought of the automatically changing events mentioned in the fifth week's tutorial. Based on the events, it can generate animations according to functions.
-![Tetris game](/picture/Tetris.png)
 
+![Tetris game](/picture/Tetris.png)
 
 ## Code analysis
 millis() from [p5.js Reference](https://p5js.org/reference/#/p5/millis)
+
+```
+  let timer = 0;// Introduces a timer
+let rowsGenerated = 0; //Introduces a row generated
+```
+
+```
+  function setup() {
+  createCanvas(windowWidth, windowHeight);
+  imgDrwPrps.aspect = img.width / img.height;
+  calculateImageDrawProps();
+}
+//remove segments are generated all at once.
+```
+
+```
+  // Generate a row of segments
+function generateRow(y) {
+  let segmentWidth = img.width / numSegments;
+  let segmentHeight = img.height / numSegments;
+  for (let x = 0; x < numSegments; x++) {
+    let segXPos = x * segmentWidth;
+    let segYPos = y * segmentHeight;
+    let segmentColour = img.get(segXPos + segmentWidth / 2, segYPos + segmentHeight / 2);
+    let segment = new ImageSegment(x, y, segmentColour);
+    segment.calculateSegDrawProps();
+    segments.push(segment);
+  }// Introduces generateRow function to create segments row by row 
+}
+```
+
+```
+  // Reset the canvas after all rows are painted
+function resetCanvas() {
+  segments = [];
+  rowsGenerated = 0;
+  timer = millis();
+}
+```
