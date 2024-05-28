@@ -29,9 +29,7 @@ function draw() {
       rowsGenerated++;
       timer = millis();
     }
-  } else {
-    resetCanvas();
-  }
+  } 
 
   if (drawSegments) {
     segments.forEach(segment => {
@@ -67,6 +65,8 @@ function resetCanvas() {
 function keyPressed() {
   if (key === " ") {
     drawSegments = !drawSegments;
+  } else if (key === "C" || key === "c") {
+    resetCanvas();
   }
 }
 
