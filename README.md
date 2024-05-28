@@ -1,7 +1,7 @@
 # ylei0672_9103_final
 
 ## Interaction of Coding
-By simply opening the webpage, you can see the matrix appearing row by row. A row of rectangles will be generated every second, and after 40 seconds the complete artwork will appear as a matrix rectangle, and then the artboard will be reset to enter the loop.
+By simply opening the webpage, you can see the matrix appearing row by row. A row of rectangles will be generated every second. After 40 seconds, the complete artwork will appear as a matrix rectangle. You can press "c" at any time to reset the canva and start generating artwork again.
 
 ## Details of the approach to animating 
 This code, based on the group's work, use Time-Based to approach to animating. Introduces a timer to create a dynamic and progressive visual representation using small rectangular segments. 
@@ -82,6 +82,7 @@ function resetCanvas() {
   timer = millis();
 }
 ```
+Added a resetCanvas function that clears the segments array and resets the rowsGenerated counter and timer.
 
 ```
 // Toggle the drawing of the segments
@@ -93,3 +94,4 @@ function keyPressed() {
   }
 }
 ```
+Added a condition in the keyPressed function to reset the canvas when the "C" key is pressed.
